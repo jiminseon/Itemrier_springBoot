@@ -19,7 +19,6 @@ import com.hotSix.itemrier_boot.domain.user.UserEntity;
 import com.hotSix.itemrier_boot.dto.item.AuctionDto;
 import com.hotSix.itemrier_boot.repository.item.AuctionRepository;
 import com.hotSix.itemrier_boot.repository.item.CategoryRepository;
-import com.hotSix.itemrier_boot.repository.item.ItemInfoRepository;
 import com.hotSix.itemrier_boot.repository.user.UserRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -32,8 +31,6 @@ public class AuctionService {
 	private final UserRepository userRepository;
 	
 	private final CategoryRepository categoryRepoistory;
-	
-	private final ItemInfoRepository itemInfoRepository;
 	
 	// 경매 상품 등록
 	public void save(AuctionDto dto, int sellerId, MultipartFile file) throws Exception {
@@ -72,7 +69,6 @@ public class AuctionService {
 			deleteFile(fileName);
 		}
 		auctionRepository.deleteById(itemId);
-		itemInfoRepository.deleteById(itemId);
 	}
 	
 	// 경매 상품 전체 목록 보기

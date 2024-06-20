@@ -12,10 +12,6 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(Model model) {
-//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//        if (auth != null && auth.isAuthenticated() && !(auth.getPrincipal() instanceof String)) {
-//            return "redirect:/";
-//        }
         return "index";
     }
 

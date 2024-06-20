@@ -9,9 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.hotSix.itemrier_boot.domain.item.Auction;
-import com.hotSix.itemrier_boot.domain.item.GroupPurchase;
 import com.hotSix.itemrier_boot.domain.item.ItemStatus;
-import com.hotSix.itemrier_boot.domain.user.UserEntity;
 
 public interface AuctionRepository extends JpaRepository<Auction, Integer>{
 	// 사용자가 상태 변경(판매 완료 / 판매 중)
@@ -24,6 +22,4 @@ public interface AuctionRepository extends JpaRepository<Auction, Integer>{
 	
 	// 마감시간 지난 입찰 내역 리스트
 	List<Auction> findAllByEndTimeBeforeAndStatus(LocalDateTime endTime, ItemStatus status);
-	
-	List<Auction> findBySellerAndStatus(UserEntity seller, ItemStatus status);
 }

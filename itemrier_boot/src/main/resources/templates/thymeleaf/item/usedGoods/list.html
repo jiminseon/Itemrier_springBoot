@@ -29,10 +29,17 @@
         font-size: 20px;
         text-align: center;
     }
+    form {
+    	
+    }
 </style>
 </head>
 <body>
-	<h2>경매 상품 목록</h2>
+	<h2>중고거래 상품 목록</h2>
+	<form th:action="@{/usedGoods/search}" method="get">
+        <input type="text" name="query" placeholder="상품명 검색">
+        <button type="submit">검색</button>
+    </form>
 	<table>
 		<tr>
 			<th>이미지</th>

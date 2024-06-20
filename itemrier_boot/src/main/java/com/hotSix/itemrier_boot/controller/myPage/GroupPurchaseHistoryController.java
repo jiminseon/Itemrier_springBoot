@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.hotSix.itemrier_boot.domain.user.UserEntity;
 import com.hotSix.itemrier_boot.dto.item.GroupPurchaseDto;
@@ -33,7 +34,7 @@ public class GroupPurchaseHistoryController {
 		
 		List<GroupPurchaseDto> groupPurchaseList = groupPurchaseService.getGroupPurchaseStatusSearch(userId, status);
 		System.out.println("groupPurchase" + groupPurchaseList);
-		model.addAttribute("groupPurchaseList", groupPurchaseList);
+		model.addAttribute(groupPurchaseList);
 		
 		return "myPage/groupPurchase/groupPurchaseInProgress";
 	}
@@ -47,7 +48,7 @@ public class GroupPurchaseHistoryController {
 		
 		List<GroupPurchaseDto> groupPurchaseList = groupPurchaseService.getGroupPurchaseStatusSearch(userId, status);
 		System.out.println("groupPurchase" + groupPurchaseList);
-		model.addAttribute("groupPurchaseList", groupPurchaseList);
+		model.addAttribute(groupPurchaseList);
 		
 		return "myPage/groupPurchase/groupPurchaseEnded";
 	}

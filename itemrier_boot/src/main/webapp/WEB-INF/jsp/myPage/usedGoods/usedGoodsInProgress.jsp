@@ -57,7 +57,8 @@
 						<img src="https://placehold.co/180" alt="상품 이미지"/>
 						<h3>상품 이름: ${userGoods.itemName}</h3>
 						<p>가격: ${userGoods.price}원</p>
-						<p>날짜:${userGoods.registerDate}</p>
+						<p>올린 날짜:${userGoods.registerDate}
+						</p>
 						<div class="status">${userGoods.status}</div>
 					</div>
 					</c:forEach>
