@@ -58,4 +58,23 @@ public class Auction extends ItemInfo {
     	this.setStatus(dto.getStatus());
     	this.setEndTime(dto.getEndTime());
     }
+    public static AuctionDto toDTO(Auction auction) {
+    	AuctionDto dto = new AuctionDto();
+    	dto.setItemId(auction.getItemId());
+    	dto.setItemName(auction.getItemName());
+    	dto.setDescription(auction.getDescription());
+    	dto.setCondition(auction.getCondition());
+    	dto.setContactType(auction.getContactType());
+    	dto.setStartPrice(auction.getStartPrice());
+    	dto.setStatus(auction.getStatus());
+    	dto.setSeller(auction.getSeller());
+    	dto.setCategory(auction.getCategory());
+    	dto.setCurrentBid(auction.getCurrentBid());
+    	dto.setStartTime(auction.getStartTime());
+    	dto.setEndTime(auction.getEndTime());
+    	dto.setWinner(auction.getWinner());
+    	dto.setFileName(auction.getFileName());
+    	dto.setFilePath(auction.getFilePath());
+    	return dto;
+    }
 }

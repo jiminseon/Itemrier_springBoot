@@ -30,22 +30,6 @@
 		padding-left: 30px; 
 	}
 	
-	.item{
-		margin-left: 10px;
-		margin-top: 40px;
-	}
-	
-	table{
-		border: 1px solid gray;
-		margin: 10px;
-		border-radius: 30px;
-		height: 250px;
-		width: 450px;
-	}
-	
-	td{
-		width : 50%;
-	}
 	
 	img{
 		margin: 20px;
@@ -66,8 +50,8 @@
 						<img src="https://placehold.co/180" alt="상품 이미지"/>
 						<h3>상품 이름: ${userGoods.itemName}</h3>
 						<p>가격: ${userGoods.price}원</p>
-						<p>올린 날짜:${userGoods.registerDate}
-						</p>
+						<p>판매자: ${userGoods.seller.nickname}원</p>
+						<p>날짜:${userGoods.registerDate}</p>
 						<div class="status">${userGoods.status}</div>
 					</div>
 					</c:forEach>
