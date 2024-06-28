@@ -69,7 +69,7 @@ public class UsedGoodsHistoryController {
 
 		List<UsedGoodsDto> userGoodsList = usedGoodsService.getUsedGoodsBuyHistory(userId);
 		System.out.println("usedGoods" + userGoodsList);
-		model.addAttribute(userGoodsList);
+		model.addAttribute("usedGoods", userGoodsList);
 
 		return "myPage/usedGoods/purchasedUsedGoods";
 	}
