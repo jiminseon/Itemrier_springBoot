@@ -23,14 +23,12 @@ public class SercurityConfig {
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http	.csrf(AbstractHttpConfigurer::disable)
 				.httpBasic(AbstractHttpConfigurer::disable)
-				.formLogin(AbstractHttpConfigurer::disable)
 				.authorizeHttpRequests((authorize) -> authorize
 						.requestMatchers("/myPage/**", "/groupPurchase/create",
 								"/usedGoods/create","/auction/create",
 								"/usedGoods/view/**", "/groupPurchase/view/**", "/auction/view/**").authenticated()
 						.anyRequest().permitAll())
-				
-				// 폼 로그인은 현재 사용하지 않음         
+    
 				.formLogin(formLogin -> formLogin
 						.loginPage("/user/login/form")
 						.loginProcessingUrl("/user/login")
@@ -39,8 +37,7 @@ public class SercurityConfig {
 						.permitAll())
 				.logout((logout) -> logout
 						.logoutUrl("/logout")   // 로그아웃 처리 URL (= form action url)
-			            //.logoutSuccessUrl("/login") // 로그아웃 성공 후 targetUrl, 
-			            // logoutSuccessHandler 가 있다면 효과 없으므로 주석처리.
+			            //.logoutSuccessUrl("/") // 로그아웃 성공 후 targetUrl, logoutSuccessHandler 가 있다면 효과 없으므로 주석처리.
 			            .addLogoutHandler((request, response, authentication) -> { 
 			                // 사실 굳이 내가 세션 무효화하지 않아도 됨. 
 			                // LogoutFilter가 내부적으로 해줌.
