@@ -41,7 +41,7 @@ public class UserService implements UserDetailsService {
 	}	
 	
 	@Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {// /user/login 자동실행
         UserEntity user = userRepository.findByEmail(email);
         System.out.println("이밍ㄹ과 유저" + user);
         if(user != null){

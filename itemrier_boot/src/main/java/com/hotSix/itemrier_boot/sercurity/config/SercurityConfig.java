@@ -7,7 +7,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.web.SecurityFilterChain;
 
-import com.hotSix.itemrier_boot.sercurity.handler.CustomAuthenticationSuccessHandler;
 
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -23,23 +22,21 @@ public class SercurityConfig {
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http	.csrf(AbstractHttpConfigurer::disable)
 				.httpBasic(AbstractHttpConfigurer::disable)
-				.authorizeHttpRequests((authorize) -> authorize
+				.authorizeHttpRequests((authorize) -> authorize //페이지 권한 부여
 						.requestMatchers("/myPage/**", "/groupPurchase/create",
 								"/usedGoods/create","/auction/create",
 								"/usedGoods/view/**", "/groupPurchase/view/**", "/auction/view/**").authenticated()
-						.anyRequest().permitAll())
+						.anyRequest().permitAll()) //특정 url 제외 전부 인가
     
 				.formLogin(formLogin -> formLogin
-						.loginPage("/user/login/form")
-						.loginProcessingUrl("/user/login")
+						.loginPage("/user/login/form") //로그인 페이지
+						.loginProcessingUrl("/user/login") //자동 로그인 방식
 						.usernameParameter("email")
-						.successHandler(new CustomAuthenticationSuccessHandler())
 						.permitAll())
 				.logout((logout) -> logout
 						.logoutUrl("/logout")   // 로그아웃 처리 URL (= form action url)
 			            //.logoutSuccessUrl("/") // 로그아웃 성공 후 targetUrl, logoutSuccessHandler 가 있다면 효과 없으므로 주석처리.
 			            .addLogoutHandler((request, response, authentication) -> { 
-			                // 사실 굳이 내가 세션 무효화하지 않아도 됨. 
 			                // LogoutFilter가 내부적으로 해줌.
 			                HttpSession session = request.getSession();
 			                if (session != null) {
